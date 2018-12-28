@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mycompany.ghhrkapp1.domain.Product;
+import com.mycompany.ghhrkapp1.entity.Products;
 import com.mycompany.ghhrkapp1.repositories.ProductRepository;
 import com.mycompany.ghhrkapp1.service.ProductService;
 
@@ -20,19 +20,19 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Iterable<Product> listAllProducts() {
+    public Iterable<Products> listAllProducts() {
         logger.debug("listAllProducts called");
         return productRepository.findAll();
     }
 
     @Override
-    public Product getProductById(Integer id) {
+    public Products getProductById(Integer id) {
         logger.debug("getProductById called");
         return productRepository.findById(id).orElse(null);
     }
 
     @Override
-    public Product saveProduct(Product product) {
+    public Products saveProduct(Products product) {
         logger.debug("saveProduct called");
         return productRepository.save(product);
     }

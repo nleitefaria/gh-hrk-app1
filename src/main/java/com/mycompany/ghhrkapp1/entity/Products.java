@@ -1,4 +1,4 @@
-package com.mycompany.ghhrkapp1.domain;
+package com.mycompany.ghhrkapp1.entity;
 
 import io.swagger.annotations.ApiModelProperty;
 
@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-public class Product {
+public class Products {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @ApiModelProperty(notes = "The database generated product ID")

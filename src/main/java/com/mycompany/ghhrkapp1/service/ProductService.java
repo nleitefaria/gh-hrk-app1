@@ -1,14 +1,14 @@
 package com.mycompany.ghhrkapp1.service;
 
 
-import com.mycompany.ghhrkapp1.domain.Product;
+import com.mycompany.ghhrkapp1.entity.Products;
 
 public interface ProductService {
-    Iterable<Product> listAllProducts();
+    Iterable<Products> listAllProducts();
 
-    Product getProductById(Integer id);
+    Products getProductById(Integer id);
 
-    Product saveProduct(Product product);
+    Products saveProduct(Products product);
 
     void deleteProduct(Integer id);
 }

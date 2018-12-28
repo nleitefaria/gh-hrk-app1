@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import com.mycompany.ghhrkapp1.domain.Product;
+import com.mycompany.ghhrkapp1.entity.Products;
 import com.mycompany.ghhrkapp1.service.ProductService;
 
 @RestController
@@ -30,28 +30,28 @@ public class ProductController
     }
     )
     @RequestMapping(value = "/list", method= RequestMethod.GET, produces = "application/json")
-    public Iterable<Product> list(Model model){
-        Iterable<Product> productList = productService.listAllProducts();
+    public Iterable<Products> list(Model model){
+        Iterable<Products> productList = productService.listAllProducts();
         return productList;
     }
-    @ApiOperation(value = "Search a product with an ID",response = Product.class)
+    @ApiOperation(value = "Search a product with an ID",response = Products.class)
     @RequestMapping(value = "/show/{id}", method= RequestMethod.GET, produces = "application/json")
-    public Product showProduct(@PathVariable Integer id, Model model){
-       Product product = productService.getProductById(id);
+    public Products showProduct(@PathVariable Integer id, Model model){
+       Products product = productService.getProductById(id);
         return product;
     }
 
     @ApiOperation(value = "Add a product")
     @RequestMapping(value = "/add", method = RequestMethod.POST, produces = "application/json")
-    public ResponseEntity saveProduct(@RequestBody Product product){
+    public ResponseEntity saveProduct(@RequestBody Products product){
         productService.saveProduct(product);
         return new ResponseEntity("Product saved successfully", HttpStatus.OK);
     }
 
     @ApiOperation(value = "Update a product")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.PUT, produces = "application/json")
-    public ResponseEntity updateProduct(@PathVariable Integer id, @RequestBody Product product){
-        Product storedProduct = productService.getProductById(id);
+    public ResponseEntity updateProduct(@PathVariable Integer id, @RequestBody Products product){
+        Products storedProduct = productService.getProductById(id);
         storedProduct.setDescription(product.getDescription());
         storedProduct.setImageUrl(product.getImageUrl());
         storedProduct.setPrice(product.getPrice());
