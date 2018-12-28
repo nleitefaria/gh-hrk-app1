@@ -7,7 +7,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import com.mycompany.ghhrkapp1.domain.Product;
+import com.mycompany.ghhrkapp1.entity.Products;
 import com.mycompany.ghhrkapp1.repositories.ProductRepository;
 import com.mycompany.ghhrkapp1.service.impl.ProductServiceImpl;
 
@@ -26,7 +26,7 @@ public class ProductServiceImplMockTest {
     @Mock
     private ProductRepository productRepository;
     @Mock
-    private Product product;
+    private Products product;
     @Before
     public void setupMock() {
         MockitoAnnotations.initMocks(this);
@@ -38,7 +38,7 @@ public class ProductServiceImplMockTest {
         // Arrange
         when(productRepository.findById(5)).thenReturn(Optional.of(product));
         // Act
-        Product retrievedProduct = productServiceImpl.getProductById(5);
+        Products retrievedProduct = productServiceImpl.getProductById(5);
         // Assert
         assertThat(retrievedProduct, is(equalTo(product)));
 
@@ -48,7 +48,7 @@ public class ProductServiceImplMockTest {
         // Arrange
         when(productRepository.save(product)).thenReturn(product);
         // Act
-        Product savedProduct = productServiceImpl.saveProduct(product);
+        Products savedProduct = productServiceImpl.saveProduct(product);
         // Assert
         assertThat(savedProduct, is(equalTo(product)));
     }

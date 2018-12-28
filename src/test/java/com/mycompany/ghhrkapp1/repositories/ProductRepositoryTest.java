@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.mycompany.ghhrkapp1.configuration.RepositoryConfiguration;
-import com.mycompany.ghhrkapp1.domain.Product;
+import com.mycompany.ghhrkapp1.entity.Products;
 import com.mycompany.ghhrkapp1.repositories.ProductRepository;
 
 import java.math.BigDecimal;
@@ -27,7 +27,7 @@ public class ProductRepositoryTest {
     @Test
     public void testSaveProduct(){
         //setup product
-        Product product = new Product();
+        Products product = new Products();
         product.setDescription("Spring Framework Guru Shirt");
         product.setPrice(new BigDecimal("18.95"));
         product.setProductId("1234");
@@ -36,7 +36,7 @@ public class ProductRepositoryTest {
         productRepository.save(product);
         assertNotNull(product.getId()); //not null after save
         //fetch from DB
-        Product fetchedProduct = productRepository.findById(product.getId()).orElse(null);
+        Products fetchedProduct = productRepository.findById(product.getId()).orElse(null);
         //should not be null
         assertNotNull(fetchedProduct);
         //should equal
@@ -46,15 +46,15 @@ public class ProductRepositoryTest {
         fetchedProduct.setDescription("New Description");
         productRepository.save(fetchedProduct);
         //get from DB, should be updated
-        Product fetchedUpdatedProduct = productRepository.findById(fetchedProduct.getId()).orElse(null);
+        Products fetchedUpdatedProduct = productRepository.findById(fetchedProduct.getId()).orElse(null);
         assertEquals(fetchedProduct.getDescription(), fetchedUpdatedProduct.getDescription());
         //verify count of products in DB
         long productCount = productRepository.count();
         assertEquals(productCount, 1);
         //get all products, list should only have one
-        Iterable<Product> products = productRepository.findAll();
+        Iterable<Products> products = productRepository.findAll();
         int count = 0;
-        for(Product p : products){
+        for(Products p : products){
             count++;
         }
         assertEquals(count, 1);
