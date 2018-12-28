@@ -16,15 +16,11 @@ import io.swagger.annotations.ApiResponses;
 
 @RestController
 @RequestMapping("/person")
-@Api(value="onlinestore", description="Person data")
-public class PersonController {
-	
-	private PersonService personService;
-
-    @Autowired
-    public void setPersonService(PersonService personService) {
-        this.personService = personService;
-    }
+@Api(value="onlinestore", description="Persons data")
+public class PersonController 
+{
+	@Autowired
+	PersonService personService;
 
     @ApiOperation(value = "View a list of available persons",response = Iterable.class)
     @ApiResponses(value = {
@@ -37,7 +33,7 @@ public class PersonController {
     
     @RequestMapping(value = "/list", method= RequestMethod.GET, produces = "application/json")
     public Iterable<Person> list(Model model){
-        Iterable<Person> personList = personService.listAllPersons();
+        Iterable<Person> personList = personService.listAll();
         return personList;
     }
 

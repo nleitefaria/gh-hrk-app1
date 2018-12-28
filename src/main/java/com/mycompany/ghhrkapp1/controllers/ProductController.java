@@ -15,15 +15,11 @@ import com.mycompany.ghhrkapp1.service.ProductService;
 
 @RestController
 @RequestMapping("/product")
-@Api(value="onlinestore", description="Operations pertaining to products in Online Store")
-public class ProductController {
-
-    private ProductService productService;
-
-    @Autowired
-    public void setProductService(ProductService productService) {
-        this.productService = productService;
-    }
+@Api(value="onlinestore", description="Products data")
+public class ProductController 
+{
+	@Autowired
+    ProductService productService;
 
     @ApiOperation(value = "View a list of available products",response = Iterable.class)
     @ApiResponses(value = {

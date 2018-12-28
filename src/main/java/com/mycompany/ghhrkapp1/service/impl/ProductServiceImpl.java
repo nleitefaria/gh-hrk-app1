@@ -1,4 +1,4 @@
-package com.mycompany.ghhrkapp1.service;
+package com.mycompany.ghhrkapp1.service.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.mycompany.ghhrkapp1.domain.Product;
 import com.mycompany.ghhrkapp1.repositories.ProductRepository;
+import com.mycompany.ghhrkapp1.service.ProductService;
 
 @Service
 public class ProductServiceImpl implements ProductService {

@@ -4,7 +4,7 @@ import com.mycompany.ghhrkapp1.domain.Person;
 
 public interface PersonService {
 	
-	Iterable<Person> listAllPersons();
+	Iterable<Person> listAll();
 	
 	
 

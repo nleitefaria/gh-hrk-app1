@@ -9,7 +9,7 @@ import org.mockito.MockitoAnnotations;
 
 import com.mycompany.ghhrkapp1.domain.Product;
 import com.mycompany.ghhrkapp1.repositories.ProductRepository;
-import com.mycompany.ghhrkapp1.service.ProductServiceImpl;
+import com.mycompany.ghhrkapp1.service.impl.ProductServiceImpl;
 
 import java.util.Optional;
 
