@@ -10,9 +10,12 @@ import org.springframework.stereotype.Component;
 import com.mycompany.ghhrkapp1.entity.Departments;
 import com.mycompany.ghhrkapp1.entity.Jobs;
 import com.mycompany.ghhrkapp1.entity.Products;
+import com.mycompany.ghhrkapp1.entity.Regions;
 import com.mycompany.ghhrkapp1.repositories.DepartmentRepository;
 import com.mycompany.ghhrkapp1.repositories.JobRepository;
 import com.mycompany.ghhrkapp1.repositories.ProductRepository;
+import com.mycompany.ghhrkapp1.repositories.RegionRepository;
+
 import java.math.BigDecimal;
 
 @Component
@@ -26,8 +29,12 @@ public class SpringJpaBootstrap implements ApplicationListener<ContextRefreshedE
 	
 	@Autowired
 	JobRepository jobRepository;
+	
+	@Autowired
+	RegionRepository regionRepository;
 
-	private Logger log = LogManager.getLogger(SpringJpaBootstrap.class);
+
+	private Logger logger = LogManager.getLogger(SpringJpaBootstrap.class);
 
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) 
@@ -35,6 +42,7 @@ public class SpringJpaBootstrap implements ApplicationListener<ContextRefreshedE
 		loadProducts();
 		loadDepartments();
 		loadJobs();
+		loadRegions();
 	}
 
 	private void loadProducts() 
@@ -52,6 +60,8 @@ public class SpringJpaBootstrap implements ApplicationListener<ContextRefreshedE
 		mug.setProductId("168639393495335947");
 		mug.setPrice(new BigDecimal("11.95"));
 		productRepository.save(mug);
+		
+		logger.info("Loaded Products");
 	}
 	
 	private void loadDepartments() 
@@ -60,7 +70,9 @@ public class SpringJpaBootstrap implements ApplicationListener<ContextRefreshedE
 		departmentRepository.save(department1);
 		
 		Departments department2 = new Departments(2, "Dept 2");
-		departmentRepository.save(department2);		
+		departmentRepository.save(department2);	
+		
+		logger.info("Loaded Departments");
 	}
 	
 	private void loadJobs()
@@ -72,7 +84,26 @@ public class SpringJpaBootstrap implements ApplicationListener<ContextRefreshedE
 		jobRepository.save(job2);
 		
 		Jobs job3 = new Jobs("cto", "CTO");
-		jobRepository.save(job3);	
+		jobRepository.save(job3);
+		
+		logger.info("Loaded Jobs");
+	}
+	
+	private void loadRegions()
+	{
+		Regions region1 = new Regions(1,"Europe");
+		regionRepository.save(region1);
+
+		Regions region2 = new Regions(2,"Americas");
+		regionRepository.save(region2);
+		
+		Regions region3 = new Regions(3,"Asia");
+		regionRepository.save(region3);
+		
+		Regions region4 = new Regions(4,"Middle East and Africa");
+		regionRepository.save(region4);
+		
+		logger.info("Loaded Regions");
 	}
 
 }

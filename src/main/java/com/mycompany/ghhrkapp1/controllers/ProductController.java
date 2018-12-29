@@ -15,7 +15,7 @@ import com.mycompany.ghhrkapp1.service.ProductService;
 
 @RestController
 @RequestMapping("/product")
-@Api(value="onlinestore", description="Products data")
+@Api(value="hr", description="Products data")
 public class ProductController 
 {
 	@Autowired
