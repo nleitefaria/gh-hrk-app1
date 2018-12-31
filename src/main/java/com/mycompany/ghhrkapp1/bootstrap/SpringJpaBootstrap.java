@@ -7,16 +7,19 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
+import com.mycompany.ghhrkapp1.entity.Countries;
 import com.mycompany.ghhrkapp1.entity.Departments;
 import com.mycompany.ghhrkapp1.entity.Jobs;
 import com.mycompany.ghhrkapp1.entity.Products;
 import com.mycompany.ghhrkapp1.entity.Regions;
+import com.mycompany.ghhrkapp1.repositories.CountryRepository;
 import com.mycompany.ghhrkapp1.repositories.DepartmentRepository;
 import com.mycompany.ghhrkapp1.repositories.JobRepository;
 import com.mycompany.ghhrkapp1.repositories.ProductRepository;
 import com.mycompany.ghhrkapp1.repositories.RegionRepository;
 
 import java.math.BigDecimal;
+import java.util.Optional;
 
 @Component
 public class SpringJpaBootstrap implements ApplicationListener<ContextRefreshedEvent> 
@@ -32,7 +35,9 @@ public class SpringJpaBootstrap implements ApplicationListener<ContextRefreshedE
 	
 	@Autowired
 	RegionRepository regionRepository;
-
+	
+	@Autowired
+	CountryRepository countryRepository;
 
 	private Logger logger = LogManager.getLogger(SpringJpaBootstrap.class);
 
@@ -43,6 +48,7 @@ public class SpringJpaBootstrap implements ApplicationListener<ContextRefreshedE
 		loadDepartments();
 		loadJobs();
 		loadRegions();
+		loadCountries();
 	}
 
 	private void loadProducts() 
@@ -104,6 +110,28 @@ public class SpringJpaBootstrap implements ApplicationListener<ContextRefreshedE
 		regionRepository.save(region4);
 		
 		logger.info("Loaded Regions");
+	}
+	
+	private void loadCountries()
+	{
+		Optional<Regions> region1 = regionRepository.findById(1);
+		Optional<Regions> region2 = regionRepository.findById(2);
+		Optional<Regions> region3 = regionRepository.findById(3);
+		Optional<Regions> region4 = regionRepository.findById(4);
+		
+		Countries c1 = new Countries("IT", (Regions) region1.get());
+		c1.setCountryName("Italy");		
+		countryRepository.save(c1);
+		
+		Countries c2 = new Countries("JP", (Regions) region3.get());
+		c2.setCountryName("Japan");		
+		countryRepository.save(c2);
+		
+		Countries c3 = new Countries("US", (Regions) region2.get());
+		c3.setCountryName("United States of America");		
+		countryRepository.save(c3);
+		
+		logger.info("Loaded Countries");
 	}
 
 }
