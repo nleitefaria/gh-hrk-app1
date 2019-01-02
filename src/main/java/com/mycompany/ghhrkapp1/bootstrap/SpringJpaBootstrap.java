@@ -10,11 +10,14 @@ import org.springframework.stereotype.Component;
 import com.mycompany.ghhrkapp1.entity.Countries;
 import com.mycompany.ghhrkapp1.entity.Departments;
 import com.mycompany.ghhrkapp1.entity.Jobs;
+import com.mycompany.ghhrkapp1.entity.Locations;
 import com.mycompany.ghhrkapp1.entity.Products;
 import com.mycompany.ghhrkapp1.entity.Regions;
 import com.mycompany.ghhrkapp1.repositories.CountryRepository;
 import com.mycompany.ghhrkapp1.repositories.DepartmentRepository;
+import com.mycompany.ghhrkapp1.repositories.EmployeeRepository;
 import com.mycompany.ghhrkapp1.repositories.JobRepository;
+import com.mycompany.ghhrkapp1.repositories.LocationRepository;
 import com.mycompany.ghhrkapp1.repositories.ProductRepository;
 import com.mycompany.ghhrkapp1.repositories.RegionRepository;
 
@@ -38,6 +41,12 @@ public class SpringJpaBootstrap implements ApplicationListener<ContextRefreshedE
 	
 	@Autowired
 	CountryRepository countryRepository;
+	
+	@Autowired
+	EmployeeRepository employeeRepository;
+	
+	@Autowired
+	LocationRepository locationRepository;
 
 	private Logger logger = LogManager.getLogger(SpringJpaBootstrap.class);
 
@@ -49,6 +58,8 @@ public class SpringJpaBootstrap implements ApplicationListener<ContextRefreshedE
 		loadJobs();
 		loadRegions();
 		loadCountries();
+		loadEmployees();
+		loadLocations();
 	}
 
 	private void loadProducts() 
@@ -132,6 +143,33 @@ public class SpringJpaBootstrap implements ApplicationListener<ContextRefreshedE
 		countryRepository.save(c3);
 		
 		logger.info("Loaded Countries");
+	}
+	
+	private void loadEmployees() 
+	{
+		
+		
+		logger.info("Loaded Employees");
+		
+	}
+	
+	private void loadLocations()
+	{
+		Optional<Countries> c1 = countryRepository.findById("IT");
+				
+		Locations location1 = new Locations(c1.get(), "Roma");
+		location1.setLocationId(1000);
+		location1.setStreetAddress("1297 Via Cola di Rie");
+		location1.setPostalCode("00989");
+		locationRepository.save(location1);
+		
+		Locations location2 = new Locations(c1.get(), "Venice");
+		location2.setLocationId(1100);
+		location2.setStreetAddress("93091 Calle della Testa");
+		location2.setPostalCode("10934");
+		locationRepository.save(location2);
+		
+		logger.info("Loaded Locations");
 	}
 
 }
