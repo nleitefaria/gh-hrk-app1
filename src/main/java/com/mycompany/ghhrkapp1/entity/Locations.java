@@ -56,7 +56,7 @@ public class Locations implements java.io.Serializable
 		this.locationId = locationId;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "country_id", nullable = false)
 	public Countries getCountries() {
 		return this.countries;
