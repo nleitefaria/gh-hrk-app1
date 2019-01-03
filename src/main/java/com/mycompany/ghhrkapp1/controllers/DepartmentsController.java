@@ -5,22 +5,22 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import com.mycompany.ghhrkapp1.entity.Jobs;
-import com.mycompany.ghhrkapp1.service.JobService;
+import com.mycompany.ghhrkapp1.entity.Departments;
+import com.mycompany.ghhrkapp1.service.DepartmentService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 @RestController
-@RequestMapping("/job")
-@Api(value="onlinestore", description="Jobs data")
-public class JobController 
-{	
+@RequestMapping("/department")
+@Api(value="onlinestore", description="Departments data")
+public class DepartmentsController {
+	
 	@Autowired
-	JobService jobService;
+	DepartmentService departmentService;
 
-    @ApiOperation(value = "List of Jobs",response = Iterable.class)
+    @ApiOperation(value = "List of Departments",response = Iterable.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successfully retrieved list"),
             @ApiResponse(code = 401, message = "You are not authorized to view the resource"),
@@ -30,9 +30,9 @@ public class JobController
     )
     
     @RequestMapping(value = "/list", method= RequestMethod.GET, produces = "application/json")
-    public Iterable<Jobs> list(Model model)
+    public Iterable<Departments> list(Model model)
     {
-        Iterable<Jobs> ret = jobService.listAll();
+        Iterable<Departments> ret = departmentService.listAll();
         return ret;
     }
 
