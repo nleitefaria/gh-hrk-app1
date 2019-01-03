@@ -45,7 +45,6 @@ public class Employees  implements java.io.Serializable
     public Employees() {
     }
 
-	
     public Employees(int employeeId, Jobs jobs, String lastName, String email, Date hireDate, BigDecimal salary) {
         this.employeeId = employeeId;
         this.jobs = jobs;
@@ -54,6 +53,17 @@ public class Employees  implements java.io.Serializable
         this.hireDate = hireDate;
         this.salary = salary;
     }
+    
+    public Employees(int employeeId, Jobs jobs, String firstName ,String lastName, String email, Date hireDate, BigDecimal salary) {
+        this.employeeId = employeeId;
+        this.jobs = jobs;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.hireDate = hireDate;
+        this.salary = salary;
+    }
+    
     public Employees(int employeeId, Departments departments, Employees employees, Jobs jobs, String firstName, String lastName, String email, String phoneNumber, Date hireDate, BigDecimal salary, BigDecimal commissionPct, Set<Departments> departmentses, Set<Employees> employeeses) {
        this.employeeId = employeeId;
        this.departments = departments;
