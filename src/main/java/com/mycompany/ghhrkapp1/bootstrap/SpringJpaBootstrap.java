@@ -14,6 +14,8 @@ public class SpringJpaBootstrap implements ApplicationListener<ContextRefreshedE
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) 
 	{
-		logger.info("Started @ --> " + event.getTimestamp());		
+		logger.info("+++++++++++++++++++++++++++++++++++++");		
+		logger.info("Started @ --> " + event.getTimestamp());	
+		logger.info("+++++++++++++++++++++++++++++++++++++");		
 	}
 }
