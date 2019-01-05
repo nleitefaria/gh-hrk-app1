@@ -1,7 +1,9 @@
 package com.mycompany.ghhrkapp1.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,7 +23,7 @@ public class CountriesController
 	@Autowired
 	CountryService countryService;
 
-    @ApiOperation(value = "List of Departments",response = Iterable.class)
+    @ApiOperation(value = "List of Countries",response = Iterable.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successfully retrieved list"),
             @ApiResponse(code = 401, message = "You are not authorized to view the resource"),
@@ -33,6 +35,13 @@ public class CountriesController
     public Iterable<Countries> list(Model model)
     {
         Iterable<Countries> ret = countryService.listAll();
+        return ret;
+    }
+    
+    @RequestMapping(value = "/list/{page}", method= RequestMethod.GET, produces = "application/json")
+    public Page<Countries> list(@PathVariable Integer page, Model model)
+    {
+        Page<Countries> ret = countryService.listAllPaged(page - 1);
         return ret;
     }
 
