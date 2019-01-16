@@ -1,11 +1,14 @@
 package com.mycompany.ghhrkapp1.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mycompany.ghhrkapp1.entity.Departments;
 import com.mycompany.ghhrkapp1.entity.Employees;
 import com.mycompany.ghhrkapp1.service.EmployeeService;
 
@@ -34,6 +37,13 @@ public class EmployeesController
     public Iterable<Employees> list(Model model)
     {
         Iterable<Employees> ret = employeeService.listAll();
+        return ret;
+    }
+    
+    @RequestMapping(value = "/list/{page}", method= RequestMethod.GET, produces = "application/json")
+    public Page<Employees> list(@PathVariable Integer page, Model model)
+    {
+        Page<Employees> ret = employeeService.listAllPaged(page - 1);
         return ret;
     }
 
