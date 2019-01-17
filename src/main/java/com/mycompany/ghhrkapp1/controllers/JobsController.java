@@ -1,10 +1,14 @@
 package com.mycompany.ghhrkapp1.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.mycompany.ghhrkapp1.entity.Employees;
 import com.mycompany.ghhrkapp1.entity.Jobs;
 import com.mycompany.ghhrkapp1.service.JobService;
 import io.swagger.annotations.Api;
@@ -33,6 +37,13 @@ public class JobsController
     public Iterable<Jobs> list(Model model)
     {
         Iterable<Jobs> ret = jobService.listAll();
+        return ret;
+    }
+    
+    @RequestMapping(value = "/list/{page}", method= RequestMethod.GET, produces = "application/json")
+    public Page<Jobs> list(@PathVariable Integer page, Model model)
+    {
+        Page<Jobs> ret = jobService.listAllPaged(page - 1);
         return ret;
     }
 
