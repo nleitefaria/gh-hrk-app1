@@ -1,7 +1,9 @@
 package com.mycompany.ghhrkapp1.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,6 +36,13 @@ public class PersonsController
     @RequestMapping(value = "/list", method= RequestMethod.GET, produces = "application/json")
     public Iterable<Persons> list(Model model){
         Iterable<Persons> ret = personService.listAll();
+        return ret;
+    }
+    
+    @RequestMapping(value = "/list/{page}", method= RequestMethod.GET, produces = "application/json")
+    public Page<Persons> list(@PathVariable Integer page, Model model)
+    {
+        Page<Persons> ret = personService.listAllPaged(page - 1);
         return ret;
     }
 

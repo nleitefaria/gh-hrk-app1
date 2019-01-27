@@ -1,10 +1,14 @@
 package com.mycompany.ghhrkapp1.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.mycompany.ghhrkapp1.entity.Locations;
 import com.mycompany.ghhrkapp1.entity.Regions;
 import com.mycompany.ghhrkapp1.service.RegionService;
 import io.swagger.annotations.Api;
@@ -32,6 +36,13 @@ public class RegionsController
     public Iterable<Regions> list(Model model)
     {
         Iterable<Regions> ret = regionService.listAll();
+        return ret;
+    }
+    
+    @RequestMapping(value = "/list/{page}", method= RequestMethod.GET, produces = "application/json")
+    public Page<Regions> list(@PathVariable Integer page, Model model)
+    {
+        Page<Regions> ret = regionService.listAllPaged(page - 1);
         return ret;
     }
 
