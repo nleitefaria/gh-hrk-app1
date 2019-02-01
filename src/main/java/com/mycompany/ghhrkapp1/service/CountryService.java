@@ -8,6 +8,7 @@ public interface CountryService
 {
 	Iterable<Countries> listAll();
 	Page<Countries> listAllPaged(int page);
+	Countries save(Countries country);
 
 
 }
