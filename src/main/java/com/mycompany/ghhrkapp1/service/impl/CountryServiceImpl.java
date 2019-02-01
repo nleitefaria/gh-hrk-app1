@@ -29,6 +29,11 @@ public class CountryServiceImpl implements CountryService
         return repository.findAll(gotoPage(page));
     }
     
+    public Countries save(Countries country) 
+    {
+        return repository.save(country);
+    }
+    
     private PageRequest gotoPage(int page)
     {
         PageRequest request = new PageRequest(page,10);

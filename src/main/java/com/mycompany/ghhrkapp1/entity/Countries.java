@@ -30,6 +30,12 @@ public class Countries implements java.io.Serializable
 		this.countryId = countryId;
 		this.regions = regions;
 	}
+	
+	public Countries(String countryId, Regions regions, String countryName) {
+		this.countryId = countryId;
+		this.regions = regions;
+		this.countryName = countryName;
+	}
 
 	public Countries(String countryId, Regions regions, String countryName, Set<Locations> locationses) {
 		this.countryId = countryId;
