@@ -6,6 +6,10 @@ public class CountriesDTO
 	private int regionId;
 	private String countryName;
 	
+	public CountriesDTO() 
+	{
+	}
+	
 	public CountriesDTO(String countryId, int regionId, String countryName) 
 	{
 		this.countryId = countryId;

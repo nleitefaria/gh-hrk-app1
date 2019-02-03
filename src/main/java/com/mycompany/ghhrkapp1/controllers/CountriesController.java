@@ -41,7 +41,7 @@ public class CountriesController
         return ret;
     }
     
-    @ApiOperation(value = "Add a product")
+    @ApiOperation(value = "Add a country")
     @RequestMapping(value = "/add", method = RequestMethod.POST, produces = "application/json")
     public ResponseEntity save(@RequestBody CountriesDTO countryDTO)
     {
