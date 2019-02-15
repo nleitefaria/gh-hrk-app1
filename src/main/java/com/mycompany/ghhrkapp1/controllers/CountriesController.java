@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import com.mycompany.ghhrkapp1.entity.Countries;
 import com.mycompany.ghhrkapp1.entity.Products;
 import com.mycompany.ghhrkapp1.service.CountryService;
+
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -26,7 +28,7 @@ public class CountriesController
 {	
 	@Autowired
 	CountryService countryService;
-
+	
     @ApiOperation(value = "List of Countries",response = Iterable.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successfully retrieved list"),

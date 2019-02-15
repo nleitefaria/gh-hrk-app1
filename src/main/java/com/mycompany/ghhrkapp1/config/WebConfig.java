@@ -1,4 +1,5 @@
 package com.mycompany.ghhrkapp1.config;
+
 import org.h2.server.web.WebServlet;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
