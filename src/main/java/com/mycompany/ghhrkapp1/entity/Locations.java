@@ -16,10 +16,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class Locations implements java.io.Serializable 
 {
-	private Integer locationId;
-	
-	private Countries countries;
-	
+	private Integer locationId;	
+	private Countries countries;	
 	private String streetAddress;
 	private String postalCode;
 	private String city;
@@ -32,6 +30,14 @@ public class Locations implements java.io.Serializable
 
 	public Locations(Countries countries, String city) {
 		this.countries = countries;
+		this.city = city;
+	}
+	
+	public Locations(Countries countries, String streetAddress, String postalCode, String city, String stateProvince) {
+		this.countries = countries;
+		this.streetAddress = streetAddress;
+		this.postalCode = postalCode;
+		this.stateProvince = stateProvince;
 		this.city = city;
 	}
 
