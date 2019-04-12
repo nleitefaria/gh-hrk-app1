@@ -47,7 +47,7 @@ public class CountriesController
     public ResponseEntity save(@RequestBody CountriesDTO countryDTO)
     {
     	countryService.save(countryDTO);
-        return new ResponseEntity("Product saved successfully", HttpStatus.OK);
+        return new ResponseEntity("Country saved successfully", HttpStatus.CREATED);
     }
 
 }

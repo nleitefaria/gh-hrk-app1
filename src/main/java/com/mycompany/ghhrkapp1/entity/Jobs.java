@@ -26,6 +26,13 @@ public class Jobs implements java.io.Serializable
 		this.jobId = jobId;
 		this.jobTitle = jobTitle;
 	}
+	
+	public Jobs(String jobId, String jobTitle, Integer minSalary, Integer maxSalary) {
+		this.jobId = jobId;
+		this.jobTitle = jobTitle;
+		this.minSalary = minSalary;
+		this.maxSalary = maxSalary;
+	}
 
 	public Jobs(String jobId, String jobTitle, Integer minSalary, Integer maxSalary, Set<Employees> employeeses) {
 		this.jobId = jobId;

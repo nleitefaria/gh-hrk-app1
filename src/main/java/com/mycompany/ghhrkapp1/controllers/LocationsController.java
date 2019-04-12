@@ -29,13 +29,6 @@ public class LocationsController {
 	LocationService locationService;
 
     @ApiOperation(value = "List of Locations",response = Iterable.class)
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Successfully retrieved list"),
-            @ApiResponse(code = 401, message = "You are not authorized to view the resource"),
-            @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
-            @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
-    }
-    )  
     @RequestMapping(value = "/list", method= RequestMethod.GET, produces = "application/json")
     public Iterable<Locations> list(Model model)
     {
@@ -43,6 +36,7 @@ public class LocationsController {
         return ret;
     }
     
+    @ApiOperation(value = "List a page of Locations")
     @RequestMapping(value = "/list/{page}", method= RequestMethod.GET, produces = "application/json")
     public Page<Locations> list(@PathVariable Integer page, Model model)
     {
@@ -55,7 +49,7 @@ public class LocationsController {
     public ResponseEntity save(@RequestBody LocationsDTO locationDTO)
     {
     	locationService.save(locationDTO);
-        return new ResponseEntity("Location saved successfully", HttpStatus.OK);
+        return new ResponseEntity("Location saved successfully", HttpStatus.CREATED);
     }
     
 
