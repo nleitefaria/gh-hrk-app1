@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import com.mycompany.ghhrkapp1.dto.JobsDTO;
 import com.mycompany.ghhrkapp1.entity.Employees;
 import com.mycompany.ghhrkapp1.entity.Jobs;
 import com.mycompany.ghhrkapp1.repositories.JobRepository;
@@ -29,6 +30,11 @@ public class JobServiceImpl implements JobService
 	public Page<Jobs> listAllPaged(int page) 
     {
         return repository.findAll(gotoPage(page));
+    }
+	
+	public Jobs save(JobsDTO jobsDTO) 
+    {
+        return repository.save(new Jobs(jobsDTO.getJobId(), jobsDTO.getJobTitle(), jobsDTO.getMinSalary(), jobsDTO.getMaxSalary()));
     }
     
     private PageRequest gotoPage(int page)

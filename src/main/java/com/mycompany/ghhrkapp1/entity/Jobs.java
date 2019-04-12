@@ -26,6 +26,13 @@ public class Jobs implements java.io.Serializable
 		this.jobId = jobId;
 		this.jobTitle = jobTitle;
 	}
+	
+	public Jobs(String jobId, String jobTitle, Integer minSalary, Integer maxSalary) {
+		this.jobId = jobId;
+		this.jobTitle = jobTitle;
+		this.minSalary = minSalary;
+		this.maxSalary = maxSalary;
+	}
 
 	public Jobs(String jobId, String jobTitle, Integer minSalary, Integer maxSalary, Set<Employees> employeeses) {
 		this.jobId = jobId;
@@ -34,9 +41,8 @@ public class Jobs implements java.io.Serializable
 		this.maxSalary = maxSalary;
 		this.employeeses = employeeses;
 	}
-
+	
 	@Id
-
 	@Column(name = "job_id", unique = true, nullable = false, length = 10)
 	public String getJobId() {
 		return this.jobId;
@@ -81,5 +87,4 @@ public class Jobs implements java.io.Serializable
 	public void setEmployeeses(Set<Employees> employeeses) {
 		this.employeeses = employeeses;
 	}
-
 }
