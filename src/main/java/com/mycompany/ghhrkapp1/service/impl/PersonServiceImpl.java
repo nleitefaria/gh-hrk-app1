@@ -7,7 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import com.mycompany.ghhrkapp1.entity.Locations;
+import com.mycompany.ghhrkapp1.dto.PersonsDTO;
 import com.mycompany.ghhrkapp1.entity.Persons;
 import com.mycompany.ghhrkapp1.repositories.PersonRepository;
 import com.mycompany.ghhrkapp1.service.PersonService;
@@ -28,6 +28,12 @@ public class PersonServiceImpl implements PersonService
     public Page<Persons> listAllPaged(int page) 
     {
         return repository.findAll(gotoPage(page));
+    }
+    
+    public Persons save(PersonsDTO personsDTO) 
+    {
+    	return repository.save(new Persons(personsDTO.getFirstName(), personsDTO.getLastName()));
+    	
     }
     
     private PageRequest gotoPage(int page)

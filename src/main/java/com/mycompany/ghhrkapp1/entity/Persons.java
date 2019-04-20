@@ -5,20 +5,28 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import io.swagger.annotations.ApiModelProperty;
-
 @Entity
 public class Persons 
 {
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @ApiModelProperty(notes = "The database generated product ID")
+    @GeneratedValue(strategy = GenerationType.AUTO) 
     private Integer id;	
-	@ApiModelProperty(notes = "The person first name")
 	private String firstName;
-	@ApiModelProperty(notes = "The person last name")
 	private String lastName;
 	
+	public Persons() {	
+	}
+	
+	public Persons(String firstName, String lastName) {	
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+	
+	public Persons(Integer id, String firstName, String lastName) {	
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
 	public Integer getId() {
 		return id;
 	}
