@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import com.mycompany.ghhrkapp1.dto.RegionsDTO;
 import com.mycompany.ghhrkapp1.entity.Regions;
 import com.mycompany.ghhrkapp1.repositories.RegionRepository;
 import com.mycompany.ghhrkapp1.service.RegionService;
@@ -27,6 +28,12 @@ public class RegionServiceImpl implements RegionService
     public Page<Regions> listAllPaged(int page) 
     {
         return repository.findAll(gotoPage(page));
+    }
+    
+    @Override
+    public Regions save(RegionsDTO regionDTO) {
+        logger.debug("save called");
+        return repository.save(new Regions(regionDTO.getRegionId(), regionDTO.getRegionName()));
     }
     
     private PageRequest gotoPage(int page)
