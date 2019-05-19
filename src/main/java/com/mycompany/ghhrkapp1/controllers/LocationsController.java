@@ -22,7 +22,7 @@ import io.swagger.annotations.ApiResponses;
 
 @RestController
 @RequestMapping("/location")
-@Api(value="onlinestore", description="Locations data")
+@Api(value="hr", description="Locations data")
 public class LocationsController {
 	
 	@Autowired

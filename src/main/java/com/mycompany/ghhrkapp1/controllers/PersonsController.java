@@ -19,7 +19,7 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/person")
-@Api(value="onlinestore", description="Persons data")
+@Api(value="hr", description="Persons data")
 public class PersonsController 
 {
 	@Autowired

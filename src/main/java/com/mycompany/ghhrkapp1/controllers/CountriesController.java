@@ -20,7 +20,7 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/country")
-@Api(value="hr")
+@Api(value="hr", description="Countries data")
 public class CountriesController 
 {	
 	@Autowired
